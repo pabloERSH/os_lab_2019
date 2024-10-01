@@ -1,7 +1,12 @@
+#include <string.h>
 #include "revert_string.h"
 
 void RevertString(char *str)
 {
-	// your code here
+	for(int i = 0; i < strlen(str) / 2; i++){
+		char temp = str[i];
+		str[i] = str[strlen(str) - 1 - i];
+		str[strlen(str) - 1 - i] = temp;
+	}
 }
 
