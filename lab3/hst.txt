@@ -1,0 +1,30 @@
+    1  cd lab3
+    2  cd src
+    3  gcc -c find_min_max.c
+    4  gcc -c sequential_min_max.c 
+    5  gcc -c utils.c
+    6  gcc find_min_max.o utils.o sequential_min_max.o -o sequential_min_max
+    7  ./sequential_min_max
+    8  ./sequential_min_max 123 10
+    9  make
+   10  ./parallel_min_max
+   11  ./parallel_min_max --seed 100 --array_size 50 --pnum 5 
+   12  ./sequential_min_max
+   13  ./sequential_min_max 100 50
+   14  make clean
+   15  make
+   16  task_5 100 50
+   17  ./task_5 100 50
+   18  make clean
+   19  make
+   20  ./task_5 100 50
+   21  make
+   22  make clean
+   23  make
+   24  ./task_5 100 50
+   25  make clean
+   26  cd 
+   27  cd workspaces/os_lab_2019/
+   28  cd /workspaces/os_lab_2019/
+   29  cd lab3
+   30  history > hst.txt
