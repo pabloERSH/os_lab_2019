@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-I.
 
-all: parallel_min_max_timeout zombie process_memory parallel_sum
+all: parallel_min_max_timeout zombie process_memory psum
 
 parallel_min_max_timeout : utils.o find_min_max.o ../../lab3/src/utils.h ../../lab3/src/find_min_max.h
 	$(CC) -o parallel_min_max_timeout utils.o find_min_max.o parallel_min_max_timeout.c $(CFLAGS)
@@ -24,8 +24,8 @@ threads_sum.o : threads_sum.h
 libthreads_sum.a : threads_sum.o
 	ar rcs libthreads_sum.a threads_sum.o
 
-parallel_sum : utils.o libthreads_sum.a
-	$(CC) -pthread -o parallel_sum utils.o parallel_sum.c -L. -lthreads_sum $(CFLAGS)
+psum : utils.o libthreads_sum.a
+	$(CC) -pthread -o psum utils.o parallel_sum.c -L. -lthreads_sum $(CFLAGS)
 
 clean :
-	rm utils.o find_min_max.o parallel_min_max_timeout zombie process_memory parallel_sum threads_sum.o libthreads_sum.a
+	rm utils.o find_min_max.o parallel_min_max_timeout zombie process_memory psum threads_sum.o libthreads_sum.a

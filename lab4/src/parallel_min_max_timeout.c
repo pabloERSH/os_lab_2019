@@ -17,7 +17,6 @@
 #include "../../lab3/src/utils.h"
 
 int pnum = -1;
-int timeout = -1;
 pid_t* pids;
 bool is_time_out = false;
 
@@ -31,6 +30,7 @@ void alarm_handler(int signum){
 }
 
 int main(int argc, char **argv) {
+  int timeout = -1;
   int seed = -1;
   int array_size = -1;
   bool with_files = false;
@@ -180,7 +180,7 @@ int main(int argc, char **argv) {
   int status;
   int i = 0;
   while (active_child_processes > 0) {
-    waitpid(pids[i], &status, 0);
+    waitpid(pids[i], &status, WNOHANG);
     if (!WIFEXITED(status)) {
       printf("Child process %d did not exit normally\n", i);
     }
